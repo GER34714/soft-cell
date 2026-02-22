@@ -1,295 +1,1592 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SoftCell | High-End Mobile Technology & Lab</title>
-    
-    <meta name="description" content="Líderes en servicio técnico especializado y venta de smartphones premium en La Plata.">
-    <meta property="og:title" content="SoftCell - El estándar de oro en tecnología móvil">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;600;800&family=Space+Grotesk:wght@300;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg: #000000;
-            --surface: #0a0a0a;
-            --accent: #007aff;
-            --accent-dim: #003d80;
-            --text: #ffffff;
-            --text-dim: #888888;
-            --border: rgba(255, 255, 255, 0.07);
-            --glow: rgba(0, 122, 255, 0.15);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SoftCell | Servicio tecnico y tecnologia en La Plata</title>
 
-        /* --- Global Reset --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
+  <meta name="description" content="Servicio tecnico especializado y venta de smartphones, accesorios y articulos de computacion en La Plata. Consultas por WhatsApp." />
+  <meta name="theme-color" content="#000000" />
 
-        /* --- Estética de Fondo HUD --- */
-        .hud-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: 
-                radial-gradient(circle at 0% 0%, var(--glow) 0%, transparent 40%),
-                radial-gradient(circle at 100% 100%, var(--glow) 0%, transparent 40%);
-            pointer-events: none; z-index: -1;
-        }
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:title" content="SoftCell | Servicio tecnico y tecnologia en La Plata" />
+  <meta property="og:description" content="Servicio tecnico especializado y venta de smartphones, accesorios y articulos de computacion en La Plata. Consultas por WhatsApp." />
+  <meta property="og:image" content="https://iili.io/qFM3ggR.jpg" />
+  <meta property="og:url" content="" />
 
-        .grid-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(var(--border) 1px, transparent 1px);
-            background-size: 40px 40px;
-            mask-image: linear-gradient(to bottom, black, transparent);
-            z-index: -2; opacity: 0.4;
-        }
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SoftCell | Servicio tecnico y tecnologia en La Plata" />
+  <meta name="twitter:description" content="Servicio tecnico especializado y venta de smartphones, accesorios y articulos de computacion en La Plata. Consultas por WhatsApp." />
+  <meta name="twitter:image" content="https://iili.io/qFM3ggR.jpg" />
 
-        /* --- Header --- */
-        header {
-            position: fixed; top: 0; width: 100%; padding: 25px 5%;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000; backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-        }
-        .logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.5rem; letter-spacing: -1px; }
-        .logo span { color: var(--accent); }
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
 
-        /* --- Hero Section --- */
-        .hero {
-            min-height: 100vh; display: flex; align-items: center; justify-content: center;
-            text-align: center; padding: 120px 5% 60px;
-        }
-        .hero-inner { max-width: 1000px; }
-        .badge {
-            display: inline-block; padding: 8px 16px; border-radius: 100px;
-            background: rgba(0, 122, 255, 0.1); border: 1px solid var(--accent);
-            color: var(--accent); font-size: 0.7rem; font-weight: 800;
-            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px;
-        }
-        .hero h1 {
-            font-size: clamp(3rem, 10vw, 7rem); font-weight: 800; line-height: 0.85;
-            letter-spacing: -4px; margin-bottom: 30px;
-            background: linear-gradient(to bottom, #fff 60%, #444);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 600px; margin: 0 auto 40px; }
+  <style>
+    :root{
+      --bg:#000;
+      --surface:#0b0b0b;
+      --surface-2:#121212;
+      --card:#0f0f10;
+      --text:#fff;
+      --text-dim:#9ca3af;
+      --border:rgba(255,255,255,.08);
+      --accent:#007aff;
+      --accent-2:#25d366;
+      --glow:rgba(0,122,255,.22);
+      --radius:22px;
+      --shadow:0 18px 45px rgba(0,0,0,.35);
+      --max:1200px;
+      --header-h:82px;
+    }
 
-        /* --- CTAs --- */
-        .cta-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
-        .btn {
-            padding: 18px 40px; border-radius: 16px; font-weight: 700;
-            text-decoration: none; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            font-size: 1rem;
-        }
-        .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 15px 30px var(--glow); }
-        .btn-secondary { background: transparent; color: #fff; border: 1px solid var(--border); }
-        .btn:hover { transform: translateY(-5px) scale(1.02); }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{width:100%;overflow-x:hidden}
+    body{
+      font-family:'Plus Jakarta Sans',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.5;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
 
-        /* --- Trust Bar --- */
-        .trust-bar {
-            padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-            display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px;
-            background: rgba(255,255,255,0.02);
-        }
-        .trust-item { text-align: center; color: var(--text-dim); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
 
-        /* --- Bento Grid Section --- */
-        .section-header { padding: 100px 5% 40px; text-align: left; max-width: 1200px; margin: 0 auto; }
-        .section-header h2 { font-size: 3.5rem; letter-spacing: -2px; }
+    .grid-bg{
+      position:fixed; inset:0; z-index:-3; pointer-events:none;
+      background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,.15));
+      opacity:.55;
+    }
 
-        .bento-grid {
-            max-width: 1200px; margin: 0 auto; padding: 0 20px 100px;
-            display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px;
-        }
-        .bento-card {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: 32px; padding: 40px; transition: 0.5s;
-            display: flex; flex-direction: column; justify-content: space-between;
-            position: relative; overflow: hidden;
-        }
-        .bento-card:hover { border-color: var(--accent); background: #111; transform: scale(1.01); }
-        
-        .c-1 { grid-column: span 8; height: 450px; }
-        .c-2 { grid-column: span 4; height: 450px; background: linear-gradient(135deg, var(--accent-dim), transparent); }
-        .c-3 { grid-column: span 4; height: 350px; }
-        .c-4 { grid-column: span 4; height: 350px; }
-        .c-5 { grid-column: span 4; height: 350px; }
+    .hud-overlay{
+      position:fixed; inset:0; z-index:-2; pointer-events:none;
+      background:
+        radial-gradient(circle at 8% 8%, rgba(0,122,255,.16) 0%, transparent 38%),
+        radial-gradient(circle at 92% 12%, rgba(0,122,255,.10) 0%, transparent 35%),
+        radial-gradient(circle at 85% 90%, rgba(37,211,102,.08) 0%, transparent 30%);
+    }
 
-        .bento-card h3 { font-size: 2rem; letter-spacing: -1px; margin-bottom: 15px; }
-        .bento-card p { color: var(--text-dim); font-size: 1rem; }
+    .noise{
+      position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.04;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    }
 
-        /* --- Proceso --- */
-        .steps { max-width: 1200px; margin: 0 auto; padding: 100px 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-        .step { position: relative; }
-        .step-num { font-size: 4rem; font-weight: 800; color: rgba(255,255,255,0.05); position: absolute; top: -40px; left: 0; }
-        .step h4 { font-size: 1.5rem; margin-bottom: 15px; position: relative; }
+    .container{
+      width:min(var(--max), 100% - 32px);
+      margin-inline:auto;
+    }
 
-        /* --- FAQ --- */
-        .faq { max-width: 800px; margin: 0 auto 100px; padding: 0 20px; }
-        details { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; margin-bottom: 15px; padding: 25px; }
-        summary { font-weight: 700; cursor: pointer; list-style: none; font-size: 1.1rem; }
-        details[open] summary { color: var(--accent); margin-bottom: 15px; }
+    header{
+      position:fixed;
+      top:0; left:0; right:0;
+      height:var(--header-h);
+      z-index:1000;
+      border-bottom:1px solid var(--border);
+      backdrop-filter: blur(14px);
+      background: rgba(0,0,0,.55);
+    }
 
-        /* --- Footer --- */
-        footer { padding: 100px 5%; border-top: 1px solid var(--border); text-align: center; }
-        footer .firm { font-size: 0.8rem; opacity: 0.5; letter-spacing: 2px; margin-top: 40px; }
-        footer a { color: var(--accent); text-decoration: none; font-weight: 700; }
+    .header-inner{
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
 
-        /* --- WhatsApp Float --- */
-        .wa-float {
-            position: fixed; bottom: 40px; right: 40px; width: 70px; height: 70px;
-            background: #25d366; border-radius: 22px; display: flex; align-items: center; justify-content: center;
-            z-index: 2000; box-shadow: 0 20px 40px rgba(37, 211, 102, 0.3); transition: 0.4s;
-        }
-        .wa-float:hover { transform: translateY(-10px) rotate(10deg); }
-        .wa-float svg { width: 35px; fill: #fff; }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
 
-        /* --- Animations --- */
-        .reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.23, 1, 0.32, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .slide-left { opacity: 0; transform: translateX(-50px); transition: 1s ease; }
-        .slide-right { opacity: 0; transform: translateX(50px); transition: 1s ease; }
-        .active-side { opacity: 1; transform: translateX(0); }
+    .brand-logo{
+      width:46px;
+      height:46px;
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      background:#111;
+      flex:0 0 auto;
+      box-shadow:0 10px 24px rgba(0,0,0,.35);
+    }
 
-        @media (max-width: 900px) {
-            .bento-grid, .steps { display: flex; flex-direction: column; }
-            .hero h1 { font-size: 3.5rem; }
-            .section-header h2 { font-size: 2.5rem; }
-        }
-    </style>
+    .brand-logo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .brand-text{
+      min-width:0;
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
+    }
+
+    .brand-text strong{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:1rem;
+      letter-spacing:-0.4px;
+    }
+
+    .brand-text span{
+      color:var(--text-dim);
+      font-size:.75rem;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:14px 18px;
+      border-radius:14px;
+      font-weight:700;
+      font-size:.95rem;
+      border:1px solid transparent;
+      transition:transform .25s ease, box-shadow .25s ease, background-color .25s ease, border-color .25s ease;
+      will-change:transform;
+      text-align:center;
+      cursor:pointer;
+    }
+
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{
+      color:#fff;
+      background:linear-gradient(180deg, #1685ff, #007aff);
+      box-shadow:0 16px 34px rgba(0,122,255,.22);
+    }
+    .btn-secondary{
+      color:#fff;
+      background:rgba(255,255,255,.02);
+      border-color:var(--border);
+    }
+
+    .btn-compact{
+      padding:10px 14px;
+      font-size:.85rem;
+      border-radius:12px;
+      white-space:nowrap;
+    }
+
+    main{padding-top:var(--header-h)}
+
+    .hero{
+      position:relative;
+      min-height:calc(100svh - 0px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:56px 0 36px;
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:auto -10% 10% -10%;
+      height:360px;
+      background:
+        radial-gradient(circle at center, rgba(0,122,255,.18), transparent 58%),
+        radial-gradient(circle at 60% 40%, rgba(255,255,255,.06), transparent 36%);
+      filter: blur(20px);
+      pointer-events:none;
+    }
+
+    .hero-shell{
+      position:relative;
+      width:min(980px, 100%);
+      margin-inline:auto;
+      border:1px solid var(--border);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
+        radial-gradient(circle at 20% 0%, rgba(0,122,255,.12), transparent 45%);
+      border-radius:28px;
+      padding:26px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:22px;
+      align-items:stretch;
+      text-align:left;
+    }
+
+    .hero-copy{
+      background:rgba(255,255,255,.015);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:28px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      min-width:0;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      width:max-content;
+      max-width:100%;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(0,122,255,.35);
+      background:rgba(0,122,255,.10);
+      color:#7ab8ff;
+      font-weight:800;
+      font-size:.72rem;
+      letter-spacing:1.2px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .hero h1{
+      font-size:clamp(2rem, 5vw, 4.3rem);
+      line-height:.95;
+      letter-spacing:-2px;
+      margin-bottom:16px;
+      background:linear-gradient(180deg, #fff 25%, #d8d8d8 72%, #747474 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      text-wrap:balance;
+    }
+
+    .hero p{
+      color:var(--text-dim);
+      font-size:1rem;
+      max-width:52ch;
+      margin-bottom:20px;
+      text-wrap:pretty;
+    }
+
+    .hero-ctas{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:18px;
+    }
+
+    .hero-meta{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:10px;
+    }
+
+    .meta-chip{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.015);
+      border-radius:14px;
+      padding:12px 12px;
+      color:#d8d8d8;
+      font-size:.88rem;
+    }
+
+    .hero-panel{
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:18px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
+        radial-gradient(circle at 90% 10%, rgba(0,122,255,.15), transparent 45%);
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      min-width:0;
+    }
+
+    .hero-logo-card{
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.005));
+      display:grid;
+      place-items:center;
+      padding:20px;
+      min-height:220px;
+      overflow:hidden;
+    }
+
+    .hero-logo-card img{
+      width:min(100%, 260px);
+      max-height:180px;
+      object-fit:contain;
+      border-radius:14px;
+      box-shadow:0 12px 30px rgba(0,0,0,.35);
+    }
+
+    .hero-panel .mini-list{
+      display:grid;
+      gap:10px;
+    }
+
+    .mini-item{
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:12px;
+      background:rgba(255,255,255,.01);
+    }
+
+    .mini-item strong{
+      display:block;
+      font-size:.9rem;
+      margin-bottom:4px;
+    }
+
+    .mini-item span{
+      color:var(--text-dim);
+      font-size:.84rem;
+    }
+
+    .trust-bar{
+      margin:26px auto 0;
+      width:min(var(--max), 100% - 32px);
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.015);
+      border-radius:20px;
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:1px;
+      overflow:hidden;
+    }
+
+    .trust-item{
+      padding:14px 10px;
+      text-align:center;
+      color:var(--text-dim);
+      font-size:.82rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.7px;
+      background:rgba(255,255,255,.01);
+    }
+
+    section{
+      padding:72px 0;
+    }
+
+    .section-head{
+      margin-bottom:20px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .section-head h2{
+      font-size:clamp(1.8rem,4vw,3rem);
+      line-height:1;
+      letter-spacing:-1.4px;
+      text-wrap:balance;
+    }
+
+    .section-head p{
+      color:var(--text-dim);
+      max-width:65ch;
+      text-wrap:pretty;
+    }
+
+    .quick-cats{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:14px;
+    }
+
+    .cat-card{
+      border:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.015), rgba(255,255,255,.005));
+      border-radius:18px;
+      padding:16px;
+      min-height:120px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      transition:transform .25s ease, border-color .25s ease, background-color .25s ease;
+    }
+
+    .cat-card:hover{
+      transform:translateY(-3px);
+      border-color:rgba(0,122,255,.35);
+      background:rgba(255,255,255,.02);
+    }
+
+    .cat-card strong{
+      font-size:1rem;
+      letter-spacing:-.4px;
+    }
+
+    .cat-card span{
+      color:var(--text-dim);
+      font-size:.88rem;
+    }
+
+    .process-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:16px;
+    }
+
+    .process-card{
+      position:relative;
+      border:1px solid var(--border);
+      background:var(--card);
+      border-radius:20px;
+      padding:18px;
+      overflow:hidden;
+      min-height:160px;
+    }
+
+    .process-card .num{
+      position:absolute;
+      top:10px;
+      right:14px;
+      font-size:2.8rem;
+      line-height:1;
+      font-weight:800;
+      color:rgba(255,255,255,.06);
+      user-select:none;
+    }
+
+    .process-card h3{
+      font-size:1.15rem;
+      margin-bottom:8px;
+      letter-spacing:-.4px;
+      position:relative;
+      z-index:1;
+    }
+
+    .process-card p{
+      color:var(--text-dim);
+      font-size:.92rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .service-band{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .service-panel{
+      border:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.015), rgba(255,255,255,.005));
+      border-radius:22px;
+      padding:22px;
+    }
+
+    .service-panel h3{
+      font-size:1.35rem;
+      letter-spacing:-.6px;
+      margin-bottom:10px;
+    }
+
+    .service-panel p{
+      color:var(--text-dim);
+      margin-bottom:14px;
+    }
+
+    .service-list{
+      display:grid;
+      gap:10px;
+      margin-bottom:16px;
+    }
+
+    .service-list li{
+      list-style:none;
+      border:1px solid var(--border);
+      border-radius:14px;
+      background:rgba(255,255,255,.01);
+      padding:12px;
+      font-size:.92rem;
+      color:#e8e8e8;
+    }
+
+    .service-list li small{
+      display:block;
+      color:var(--text-dim);
+      font-size:.8rem;
+      margin-top:4px;
+    }
+
+    .service-side{
+      display:grid;
+      grid-template-rows:1fr auto;
+      gap:14px;
+    }
+
+    .highlight-card{
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:20px;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(0,122,255,.12), transparent 45%),
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.005));
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .highlight-card h4{
+      font-size:1.2rem;
+      letter-spacing:-.5px;
+      margin-bottom:8px;
+    }
+
+    .highlight-card p{
+      color:var(--text-dim);
+      font-size:.92rem;
+      margin-bottom:14px;
+    }
+
+    .stat-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;
+    }
+
+    .stat{
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:12px;
+      background:rgba(255,255,255,.01);
+    }
+
+    .stat strong{
+      display:block;
+      font-size:1rem;
+      margin-bottom:4px;
+    }
+
+    .stat span{
+      color:var(--text-dim);
+      font-size:.82rem;
+    }
+
+    .gallery-wrap{
+      border:1px solid var(--border);
+      border-radius:26px;
+      padding:18px;
+      background:linear-gradient(180deg, rgba(255,255,255,.015), rgba(255,255,255,.005));
+      box-shadow:var(--shadow);
+    }
+
+    .gallery-top{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:14px;
+    }
+
+    .gallery-top h3{
+      font-size:1.1rem;
+      letter-spacing:-.4px;
+    }
+
+    .gallery-top p{
+      color:var(--text-dim);
+      font-size:.9rem;
+    }
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:12px;
+    }
+
+    .product-card{
+      border:1px solid var(--border);
+      border-radius:16px;
+      overflow:hidden;
+      background:var(--surface-2);
+      transition:transform .25s ease, border-color .25s ease;
+      display:flex;
+      flex-direction:column;
+      min-width:0;
+    }
+
+    .product-card:hover{
+      transform:translateY(-3px);
+      border-color:rgba(0,122,255,.35);
+    }
+
+    .product-card .img-wrap{
+      aspect-ratio:1/1;
+      background:#090909;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .product-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .35s ease;
+    }
+
+    .product-card:hover img{transform:scale(1.04)}
+
+    .product-card .info{
+      padding:12px;
+      display:grid;
+      gap:8px;
+    }
+
+    .product-card .tag{
+      width:max-content;
+      max-width:100%;
+      font-size:.72rem;
+      line-height:1;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      color:#d9d9d9;
+      background:rgba(255,255,255,.02);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .product-card .title{
+      font-size:.9rem;
+      font-weight:700;
+      letter-spacing:-.2px;
+      color:#fff;
+      display:-webkit-box;
+      -webkit-line-clamp:2;
+      -webkit-box-orient:vertical;
+      overflow:hidden;
+      min-height:2.6em;
+    }
+
+    .product-card .ask{
+      margin-top:auto;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:10px 10px;
+      background:rgba(255,255,255,.01);
+      color:#fff;
+      font-size:.82rem;
+      font-weight:700;
+      transition:background-color .2s ease, border-color .2s ease;
+    }
+
+    .product-card .ask:hover{
+      border-color:rgba(37,211,102,.35);
+      background:rgba(37,211,102,.06);
+    }
+
+    .faq-wrap{
+      max-width:860px;
+      margin-inline:auto;
+    }
+
+    .faq-wrap h2{
+      text-align:center;
+      font-size:clamp(1.8rem,4vw,2.6rem);
+      letter-spacing:-1px;
+      margin-bottom:14px;
+    }
+
+    .faq-wrap p{
+      text-align:center;
+      color:var(--text-dim);
+      margin-bottom:18px;
+    }
+
+    details{
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:rgba(255,255,255,.01);
+      padding:16px 16px;
+      margin-bottom:10px;
+    }
+
+    summary{
+      cursor:pointer;
+      list-style:none;
+      font-weight:700;
+      position:relative;
+      padding-right:24px;
+    }
+
+    summary::-webkit-details-marker{display:none}
+    summary::after{
+      content:"+";
+      position:absolute;
+      right:0;
+      top:0;
+      color:var(--text-dim);
+      font-weight:700;
+    }
+
+    details[open] summary{
+      color:#86beff;
+      margin-bottom:10px;
+    }
+
+    details[open] summary::after{content:"−"; color:#86beff}
+
+    details p{
+      text-align:left;
+      margin:0;
+      color:var(--text-dim);
+      font-size:.95rem;
+    }
+
+    .cta-band{
+      border:1px solid var(--border);
+      border-radius:24px;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(0,122,255,.16), transparent 40%),
+        linear-gradient(180deg, rgba(255,255,255,.015), rgba(255,255,255,.005));
+      padding:22px;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:14px;
+      align-items:center;
+    }
+
+    .cta-band h3{
+      font-size:1.35rem;
+      letter-spacing:-.6px;
+      margin-bottom:6px;
+    }
+
+    .cta-band p{
+      color:var(--text-dim);
+      font-size:.95rem;
+      text-wrap:pretty;
+    }
+
+    footer{
+      border-top:1px solid var(--border);
+      padding:34px 0 110px;
+      background:rgba(255,255,255,.008);
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    .footer-brand{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
+
+    .footer-brand .brand-logo{
+      width:54px;height:54px;border-radius:14px;
+    }
+
+    .footer-brand h4{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:1.1rem;
+      letter-spacing:-.4px;
+      margin-bottom:6px;
+    }
+
+    .footer-brand p{
+      color:var(--text-dim);
+      font-size:.92rem;
+      max-width:52ch;
+    }
+
+    .footer-cols{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:14px;
+    }
+
+    .foot-card{
+      border:1px solid var(--border);
+      border-radius:16px;
+      background:rgba(255,255,255,.01);
+      padding:14px;
+    }
+
+    .foot-card strong{
+      display:block;
+      margin-bottom:8px;
+      font-size:.9rem;
+      letter-spacing:-.2px;
+    }
+
+    .foot-card p,.foot-card a{
+      color:var(--text-dim);
+      font-size:.88rem;
+      line-height:1.45;
+    }
+
+    .foot-card a:hover{color:#fff}
+
+    .firm{
+      margin-top:20px;
+      padding-top:14px;
+      border-top:1px dashed rgba(255,255,255,.08);
+      font-size:.8rem;
+      color:rgba(255,255,255,.55);
+      letter-spacing:.6px;
+      text-align:center;
+    }
+
+    .firm a{
+      color:#86beff;
+      font-weight:700;
+    }
+
+    .wa-float{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      width:66px;
+      height:66px;
+      border-radius:20px;
+      background:#25d366;
+      display:grid;
+      place-items:center;
+      z-index:1100;
+      box-shadow:0 18px 40px rgba(37,211,102,.28);
+      transition:transform .25s ease, box-shadow .25s ease;
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .wa-float:hover{
+      transform:translateY(-3px) rotate(2deg);
+      box-shadow:0 22px 44px rgba(37,211,102,.34);
+    }
+
+    .wa-float svg{
+      width:31px;
+      height:31px;
+      fill:#fff;
+      display:block;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(24px);
+      transition:opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.left{transform:translateX(-26px)}
+    .reveal.right{transform:translateX(26px)}
+    .reveal.active{
+      opacity:1;
+      transform:none;
+    }
+
+    #catalogo, #servicios, #faq { scroll-margin-top: calc(var(--header-h) + 14px); }
+
+    @media (max-width: 1024px){
+      .hero-grid,
+      .service-band,
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+
+      .quick-cats{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .gallery-grid{
+        grid-template-columns:repeat(3,minmax(0,1fr));
+      }
+
+      .trust-bar{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .cta-band{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 768px){
+      :root{ --header-h:74px; }
+
+      .container{
+        width:min(var(--max), 100% - 20px);
+      }
+
+      .header-inner{
+        gap:8px;
+      }
+
+      .brand-logo{
+        width:40px;height:40px;border-radius:10px;
+      }
+
+      .brand-text strong{font-size:.93rem}
+      .brand-text span{font-size:.68rem}
+
+      .hero{
+        padding:34px 0 26px;
+        min-height:auto;
+      }
+
+      .hero-shell{
+        padding:14px;
+        border-radius:20px;
+      }
+
+      .hero-grid{
+        gap:12px;
+      }
+
+      .hero-copy,
+      .hero-panel{
+        padding:14px;
+        border-radius:16px;
+      }
+
+      .hero h1{
+        letter-spacing:-1.2px;
+        margin-bottom:10px;
+      }
+
+      .hero p{
+        font-size:.94rem;
+        margin-bottom:14px;
+      }
+
+      .hero-ctas{
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .hero-ctas .btn{
+        width:100%;
+        justify-content:center;
+      }
+
+      .hero-meta{
+        grid-template-columns:1fr;
+      }
+
+      .trust-item{
+        font-size:.74rem;
+        padding:12px 8px;
+      }
+
+      section{
+        padding:58px 0;
+      }
+
+      .section-head{
+        margin-bottom:14px;
+      }
+
+      .quick-cats,
+      .process-grid{
+        grid-template-columns:1fr;
+      }
+
+      .gallery-wrap{
+        padding:12px;
+        border-radius:18px;
+      }
+
+      .gallery-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:10px;
+      }
+
+      .product-card .info{
+        padding:10px;
+        gap:7px;
+      }
+
+      .product-card .title{
+        font-size:.86rem;
+      }
+
+      .footer-cols{
+        grid-template-columns:1fr;
+      }
+
+      .wa-float{
+        width:58px;
+        height:58px;
+        right:14px;
+        bottom:14px;
+        border-radius:18px;
+      }
+
+      .wa-float svg{
+        width:28px;height:28px;
+      }
+    }
+
+    @media (max-width: 420px){
+      .btn-compact{
+        padding:9px 10px;
+        font-size:.78rem;
+      }
+
+      .brand-text span{
+        display:none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{scroll-behavior:auto!important}
+      .reveal,.reveal.left,.reveal.right{
+        opacity:1!important;
+        transform:none!important;
+        transition:none!important;
+      }
+      .btn,.wa-float,.product-card img,.product-card,.cat-card{
+        transition:none!important;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="grid-bg"></div>
+  <div class="hud-overlay"></div>
+  <div class="noise"></div>
 
-    <div class="grid-bg"></div>
-    <div class="hud-overlay"></div>
+  <header>
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio de SoftCell">
+        <div class="brand-logo">
+          <img src="https://iili.io/qFM3ggR.jpg" alt="Logo SoftCell" loading="eager" />
+        </div>
+        <div class="brand-text">
+          <strong>SOFTCELL</strong>
+          <span>Servicio tecnico y tecnologia en La Plata</span>
+        </div>
+      </a>
 
-    <header>
-        <div class="logo">SOFT<span>CELL</span></div>
-        <a href="https://wa.me/5492215318198" class="btn-primary" style="padding: 10px 20px; font-size: 0.8rem; border-radius: 10px;">CONSULTAR STOCK</a>
-    </header>
+      <a
+        href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20consultar%20stock%20y%20productos."
+        class="btn btn-primary btn-compact"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Consultar stock por WhatsApp"
+      >
+        Consultar stock
+      </a>
+    </div>
+  </header>
 
+  <main id="inicio">
     <section class="hero">
-        <div class="hero-inner">
-            <span class="badge">Lab & Mobile Experience</span>
-            <h1 class="reveal">SMARTPHONES<br>PARA EXIGENTES.</h1>
-            <p class="reveal">Especialistas en Apple y Android de alta gama. Servicio técnico de precisión con garantía certificada en La Plata.</p>
-            <div class="cta-group reveal">
-                <a href="https://wa.me/5492215318198" class="btn btn-primary">WHATSAPP DIRECTO</a>
-                <a href="#catalogo" class="btn btn-secondary">VER CATÁLOGO</a>
+      <div class="container">
+        <div class="hero-shell reveal">
+          <div class="hero-grid">
+            <div class="hero-copy reveal left">
+              <span class="badge">Lab & Mobile Experience</span>
+              <h1>Servicio tecnico y tecnologia para todos los dias.</h1>
+              <p>
+                Venta de celulares, accesorios y articulos de computacion. Reparaciones con diagnostico,
+                presupuesto y atencion por WhatsApp en La Plata.
+              </p>
+
+              <div class="hero-ctas">
+                <a
+                  href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20consultar%20por%20productos."
+                  class="btn btn-primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Abrir WhatsApp para consultar productos"
+                >
+                  WhatsApp directo
+                </a>
+                <a href="#catalogo" class="btn btn-secondary" aria-label="Ir a la galeria de productos">
+                  Ver galeria
+                </a>
+              </div>
+
+              <div class="hero-meta">
+                <div class="meta-chip">Celulares y accesorios</div>
+                <div class="meta-chip">Articulos de computacion</div>
+                <div class="meta-chip">Consulta rapida por WhatsApp</div>
+                <div class="meta-chip">Atencion en La Plata</div>
+              </div>
             </div>
+
+            <div class="hero-panel reveal right">
+              <div class="hero-logo-card">
+                <img src="https://iili.io/qFM3ggR.jpg" alt="Imagen de marca SoftCell" loading="eager" />
+              </div>
+
+              <div class="mini-list">
+                <div class="mini-item">
+                  <strong>Venta + servicio tecnico</strong>
+                  <span>Catalogo visual y consultas directas para resolver rapido.</span>
+                </div>
+                <div class="mini-item">
+                  <strong>Productos destacados</strong>
+                  <span>Auriculares, parlantes, accesorios, compu y mas.</span>
+                </div>
+                <div class="mini-item">
+                  <strong>Atencion personalizada</strong>
+                  <span>Escribinos por WhatsApp y te guiamos segun lo que necesitas.</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <div class="trust-bar reveal">
+          <div class="trust-item">Servicio tecnico</div>
+          <div class="trust-item">Accesorios y audio</div>
+          <div class="trust-item">Art. computacion</div>
+          <div class="trust-item">Consulta por WhatsApp</div>
+        </div>
+      </div>
     </section>
 
-    <div class="trust-bar reveal">
-        <div class="trust-item">Repuestos Originales</div>
-        <div class="trust-item">Garantía Escrita</div>
-        <div class="trust-item">Atención en el día</div>
-        <div class="trust-item">Envíos a todo el país</div>
-    </div>
+    <section id="servicios">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="badge">Que ofrecemos</span>
+          <h2>Venta de tecnologia y soporte.</h2>
+          <p>
+            SoftCell combina venta de productos con atencion tecnica. Mostramos catalogo visual para que
+            puedas consultar stock rapido y resolver todo en un mismo lugar.
+          </p>
+        </div>
 
-    <div class="section-header" id="catalogo">
-        <span class="badge">Nuestros Servicios</span>
-        <h2 class="reveal">Soluciones en tecnología.</h2>
-    </div>
+        <div class="quick-cats">
+          <article class="cat-card reveal">
+            <strong>Auriculares y audio</strong>
+            <span>Modelos inalambricos, accesorios y opciones de uso diario.</span>
+          </article>
+          <article class="cat-card reveal">
+            <strong>Accesorios para celular</strong>
+            <span>Cables, cargadores, fundas, soportes y mas.</span>
+          </article>
+          <article class="cat-card reveal">
+            <strong>Compu y perifericos</strong>
+            <span>Mouse, accesorios y articulos de computacion.</span>
+          </article>
+          <article class="cat-card reveal">
+            <strong>Servicio tecnico</strong>
+            <span>Consultas y diagnostico para equipos y reparaciones.</span>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <section class="bento-grid">
-        <div class="bento-card c-1 reveal slide-left">
+    <section>
+      <div class="container">
+        <div class="service-band">
+          <div class="service-panel reveal left">
+            <h3>Como trabajamos</h3>
+            <p>
+              Si necesitas reparar un equipo o consultar por un producto, la forma mas rapida es por WhatsApp.
+              Te orientamos segun el modelo, disponibilidad y tipo de solucion.
+            </p>
+            <ul class="service-list">
+              <li>
+                Consulta por WhatsApp
+                <small>Contanos que necesitas (producto o reparacion) y te guiamos.</small>
+              </li>
+              <li>
+                Confirmacion de stock / disponibilidad
+                <small>Te respondemos segun lo que este disponible al momento.</small>
+              </li>
+              <li>
+                Coordinacion y entrega
+                <small>Retiro, visita o coordinacion segun el caso.</small>
+              </li>
+            </ul>
+            <a
+              href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20hacer%20una%20consulta."
+              class="btn btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Consultar por WhatsApp"
+            >
+              Hacer consulta ahora
+            </a>
+          </div>
+
+          <div class="service-side">
+            <div class="highlight-card reveal right">
+              <div>
+                <h4>Atencion enfocada en resolver rapido</h4>
+                <p>
+                  Esta web esta pensada para mostrar productos y facilitar la consulta directa. Si queres
+                  precio o stock, escribinos y te respondemos por WhatsApp.
+                </p>
+              </div>
+              <div class="stat-grid">
+                <div class="stat">
+                  <strong>Catalogo visual</strong>
+                  <span>Productos destacados</span>
+                </div>
+                <div class="stat">
+                  <strong>Consulta directa</strong>
+                  <span>WhatsApp</span>
+                </div>
+                <div class="stat">
+                  <strong>La Plata</strong>
+                  <span>Atencion local</span>
+                </div>
+                <div class="stat">
+                  <strong>SoftCell</strong>
+                  <span>Tecnologia + soporte</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="process-grid">
+              <article class="process-card reveal">
+                <div class="num">01</div>
+                <h3>Escribinos</h3>
+                <p>Envianos tu consulta por producto, accesorio o reparacion.</p>
+              </article>
+              <article class="process-card reveal">
+                <div class="num">02</div>
+                <h3>Te guiamos</h3>
+                <p>Confirmamos disponibilidad o te orientamos con la solucion.</p>
+              </article>
+              <article class="process-card reveal">
+                <div class="num">03</div>
+                <h3>Coordinamos</h3>
+                <p>Definimos entrega, retiro o siguiente paso segun el caso.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalogo">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="badge">Galeria</span>
+          <h2>Productos destacados</h2>
+          <p>
+            Galeria visual de productos publicados. Para consultar precio, disponibilidad o variantes,
+            escribinos por WhatsApp.
+          </p>
+        </div>
+
+        <div class="gallery-wrap reveal">
+          <div class="gallery-top">
             <div>
-                <h3>Servicio Técnico Especializado</h3>
-                <p>Cambiamos tu módulo, batería o pin de carga mientras esperás. Contamos con laboratorio propio de micro-soldadura.</p>
+              <h3>Galeria de productos SoftCell</h3>
+              <p>17 imagenes cargadas · consulta directa por WhatsApp</p>
             </div>
-            <div style="font-size: 5rem; opacity: 0.1; text-align: right;">01</div>
-        </div>
-        
-        <div class="bento-card c-2 reveal slide-right">
-            <h3>iPhones & Android</h3>
-            <p>Venta de equipos nuevos y usados seleccionados con un riguroso testeo de 40 puntos.</p>
-        </div>
+            <a
+              href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20consultar%20por%20un%20producto%20de%20la%20galeria."
+              class="btn btn-secondary"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Consultar por un producto de la galeria por WhatsApp"
+            >
+              Consultar por galeria
+            </a>
+          </div>
 
-        <div class="bento-card c-3 reveal">
-            <h3>Accesorios Pro</h3>
-            <p>Fundas de alto impacto, vidrios templados 9D y periféricos premium.</p>
-        </div>
+          <div class="gallery-grid">
+            <article class="product-card reveal">
+              <div class="img-wrap"><img src="https://iili.io/qFM3FlR.jpg" alt="Producto SoftCell 1" loading="lazy" /></div>
+              <div class="info">
+                <span class="tag">Accesorios / Audio</span>
+                <div class="title">Producto destacado SoftCell</div>
+                <a class="ask" target="_blank" rel="noopener noreferrer" href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20consultar%20por%20el%20producto%201%20de%20la%20galeria.">Consultar</a>
+              </div>
+            </article>
 
-        <div class="bento-card c-4 reveal">
-            <h3>Art. Computación</h3>
-            <p>Componentes y periféricos para potenciar tu productividad y setup gaming.</p>
-        </div>
+            <article class="product-card reveal">
+              <div class="img-wrap"><img src="https://iili.io/qFM3diJ.jpg" alt="Producto SoftCell 2" loading="lazy" /></div>
+              <div class="info">
+                <span class="tag">Accesorios</span>
+                <div class="title">Producto destacado SoftCell</div>
+                <a class="ask" target="_blank" rel="noopener noreferrer" href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20consultar%20por%20el%20producto%202%20de%20la%20galeria.">Consultar</a>
+              </div>
+            </article>
 
-        <div class="bento-card c-5 reveal">
-            <h3>Garantía SoftCell</h3>
-            <p>Cada equipo vendido y cada reparación tiene el respaldo total de nuestro laboratorio.</p>
+            <article class="product-card reveal">
+              <div class="img-wrap"><img src="https://iili.io/qFM33Kv.jpg" alt="Producto SoftCell 3" loading="lazy" /></div>
+              <div class="info">
+                <span class="tag">Audio</span>
+                <div class="title">Producto destacado SoftCell</div>
+                <a class="ask" target="_blank" rel="noopener noreferrer" href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20consultar%20por%20el%20producto%203%20de%20la%20galeria.">Consultar</a>
+              </div>
+            </article>
+
+            <article class="product-card reveal">
+              <div class="img-wrap"><img src="https://iili.io/qFM3KSp.jpg" alt="Producto SoftCell 4" loading="lazy" /></div>
+              <div class="info">
+                <span class="tag">Compu / Perifericos</span>
+                <div class="title">Producto destacado SoftCell</div>
+                <a class="ask" target="_blank" rel="noopener noreferrer" href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20consultar%20por%20el%20producto%204%20de%20la%20galeria.">Consultar</a>
+              </div>
+            </article>
+
+            <article class="product-card reveal">
+              <div class="img-wrap"><img src="https://iili.io/qFM3BRI.jpg" alt="Producto SoftCell 5" loading="lazy" /></div>
+              <div class="info">
+                <span class="tag">Accesorios</span>
+                <div class="title">Producto destacado SoftCell</div>
+                <a class="ask" target="_blank" rel="noopener noreferrer" href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20consultar%20por%20el%20producto%205%20de%20la%20galeria.">Consultar</a>
+              </div>
+            </article>
+
+            <article class="product-card reveal">
+              <div class="img-wrap"><img src="https://iili.io/qFM3CNt.jpg" alt="Producto SoftCell 6" loading="lazy" /></div>
+              <div class="info">
+                <span class="tag">Audio / Parlantes</span>
+                <div class="title">Producto destacado SoftCell</div>
+                <a class="ask" target="_blank" rel="noopener noreferrer" href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20consultar%20por%20el%20producto%206%20de%20la%20galeria.">Consultar</a>
+              </div>
+            </article>
+
+            <article class="product-card reveal">
+              <div class="img-wrap"><img src="https://iili.io/qFM3nDX.jpg" alt="Producto SoftCell 7" loading="lazy" /></div>
+              <div class="info">
+                <span class="tag">Accesorios / Hogar</span>
+                <div class="title">Producto destacado SoftCell</div>
+                <a class="ask" target="_blank" rel="noopener noreferrer" href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20consultar%20por%20el%20producto%207%20de%20la%20galeria.">Consultar</a>
+              </div>
+            </article>
+
+            <article class="product-card reveal">
+              <div class="img-wrap"><img src="https://iili.io/qFM3xxn.jpg" alt="Producto SoftCell 8" loading="lazy" /></div>
+              <div class="info">
+                <span class="tag">Accesorios</span>
+                <div class="title">Producto destacado SoftCell</div>
+                <a class="ask" target="_blank" rel="noopener noreferrer" href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20consultar%20por%20el%20producto%208%20de%20la%20galeria.">Consultar</a>
+              </div>
+            </article>
+
+            <article class="product-card reveal">
+              <div class="img-wrap"><img src="https://iili.io/qFMn3hB.jpg" alt="Producto SoftCell 9" loading="lazy" /></div>
+              <div class="info">
+                <span class="tag">Audio / Auriculares</span>
+                <div class="title">Producto destacado SoftCell</div>
+                <a class="ask" target="_blank" rel="noopener noreferrer" href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20consultar%20por%20el%20producto%209%20de%20la%20galeria.">Consultar</a>
+              </div>
+            </article>
+
+            <article class="product-card reveal">
+              <div class="img-wrap"><img src="https://iili.io/qFMnfB1.jpg" alt="Producto SoftCell 10" loading="lazy" /></div>
+              <div class="info">
+                <span class="tag">Compu / Accesorios</span>
+                <div class="title">Producto destacado SoftCell</div>
+                <a class="ask" target="_blank" rel="noopener noreferrer" href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20consultar%20por%20el%20producto%2010%20de%20la%20galeria.">Consultar</a>
+              </div>
+            </article>
+
+            <article class="product-card reveal">
+              <div class="img-wrap"><img src="https://iili.io/qFMn2IV.jpg" alt="Producto SoftCell 11" loading="lazy" /></div>
+              <div class="info">
+                <span class="tag">Accesorios / Carga</span>
+                <div class="title">Producto destacado SoftCell</div>
+                <a class="ask" target="_blank" rel="noopener noreferrer" href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20consultar%20por%20el%20producto%2011%20de%20la%20galeria.">Consultar</a>
+              </div>
+            </article>
+
+            <article class="product-card reveal">
+              <div class="img-wrap"><img src="https://iili.io/qFMnFLP.jpg" alt="Producto SoftCell 12" loading="lazy" /></div>
+              <div class="info">
+                <span class="tag">Parlantes / Audio</span>
+                <div class="title">Producto destacado SoftCell</div>
+                <a class="ask" target="_blank" rel="noopener noreferrer" href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20consultar%20por%20el%20producto%2012%20de%20la%20galeria.">Consultar</a>
+              </div>
+            </article>
+
+            <article class="product-card reveal">
+              <div class="img-wrap"><img src="https://iili.io/qFMnqEF.jpg" alt="Producto SoftCell 13" loading="lazy" /></div>
+              <div class="info">
+                <span class="tag">Accesorios / TV</span>
+                <div class="title">Producto destacado SoftCell</div>
+                <a class="ask" target="_blank" rel="noopener noreferrer" href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20consultar%20por%20el%20producto%2013%20de%20la%20galeria.">Consultar</a>
+              </div>
+            </article>
+
+            <article class="product-card reveal">
+              <div class="img-wrap"><img src="https://iili.io/qFMnBrg.jpg" alt="Producto SoftCell 14" loading="lazy" /></div>
+              <div class="info">
+                <span class="tag">Accesorios / Memorias</span>
+                <div class="title">Producto destacado SoftCell</div>
+                <a class="ask" target="_blank" rel="noopener noreferrer" href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20consultar%20por%20el%20producto%2014%20de%20la%20galeria.">Consultar</a>
+              </div>
+            </article>
+
+            <article class="product-card reveal">
+              <div class="img-wrap"><img src="https://iili.io/qFMnn2a.jpg" alt="Producto SoftCell 15" loading="lazy" /></div>
+              <div class="info">
+                <span class="tag">Compu / Mouse</span>
+                <div class="title">Producto destacado SoftCell</div>
+                <a class="ask" target="_blank" rel="noopener noreferrer" href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20consultar%20por%20el%20producto%2015%20de%20la%20galeria.">Consultar</a>
+              </div>
+            </article>
+
+            <article class="product-card reveal">
+              <div class="img-wrap"><img src="https://iili.io/qFMnoYJ.jpg" alt="Producto SoftCell 16" loading="lazy" /></div>
+              <div class="info">
+                <span class="tag">Audio / Auriculares</span>
+                <div class="title">Producto destacado SoftCell</div>
+                <a class="ask" target="_blank" rel="noopener noreferrer" href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20consultar%20por%20el%20producto%2016%20de%20la%20galeria.">Consultar</a>
+              </div>
+            </article>
+
+            <article class="product-card reveal">
+              <div class="img-wrap"><img src="https://iili.io/qFMnxkv.jpg" alt="Producto SoftCell 17" loading="lazy" /></div>
+              <div class="info">
+                <span class="tag">Accesorios / Varios</span>
+                <div class="title">Producto destacado SoftCell</div>
+                <a class="ask" target="_blank" rel="noopener noreferrer" href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20consultar%20por%20el%20producto%2017%20de%20la%20galeria.">Consultar</a>
+              </div>
+            </article>
+          </div>
         </div>
+      </div>
     </section>
 
-    <section class="section-header">
-        <span class="badge">Cómo Trabajamos</span>
-        <h2 class="reveal">Proceso de excelencia.</h2>
+    <section id="faq">
+      <div class="container">
+        <div class="faq-wrap reveal">
+          <h2>Preguntas frecuentes</h2>
+          <p>Si no encontras lo que buscas en la galeria, escribinos y te ayudamos por WhatsApp.</p>
+
+          <details>
+            <summary>Como consulto por un producto de la galeria?</summary>
+            <p>Hace click en "Consultar" dentro de cualquier tarjeta y se abre WhatsApp con el mensaje listo para enviar.</p>
+          </details>
+
+          <details>
+            <summary>Publican precios en la web?</summary>
+            <p>La web esta orientada a consulta directa por WhatsApp para confirmar stock, precio y disponibilidad actualizada.</p>
+          </details>
+
+          <details>
+            <summary>Tambien hacen servicio tecnico?</summary>
+            <p>Si. SoftCell trabaja con venta de tecnologia y consultas de servicio tecnico. Escribinos y te orientamos segun el equipo.</p>
+          </details>
+
+          <details>
+            <summary>Atienden en La Plata?</summary>
+            <p>Si, la atencion es en La Plata. Podes escribir por WhatsApp para coordinar y recibir informacion actualizada.</p>
+          </details>
+        </div>
+      </div>
     </section>
 
-    <section class="steps">
-        <div class="step reveal">
-            <div class="step-num">01</div>
-            <h4>Diagnóstico</h4>
-            <p style="color: var(--text-dim);">Revisamos tu equipo con herramientas láser y microscopía para encontrar la falla real.</p>
+    <section>
+      <div class="container">
+        <div class="cta-band reveal">
+          <div>
+            <h3>Necesitas precio, stock o una reparacion?</h3>
+            <p>
+              Escribinos por WhatsApp y te respondemos segun lo que estes buscando. Consulta rapida y directa.
+            </p>
+          </div>
+          <a
+            href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20hacer%20una%20consulta%20por%20productos%20o%20servicio%20tecnico."
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Abrir WhatsApp para consulta general"
+          >
+            Consultar por WhatsApp
+          </a>
         </div>
-        <div class="step reveal">
-            <div class="step-num">02</div>
-            <h4>Cotización</h4>
-            <p style="color: var(--text-dim);">Presupuesto transparente y sin sorpresas. Repuestos de máxima calidad disponibles.</p>
-        </div>
-        <div class="step reveal">
-            <div class="step-num">03</div>
-            <h4>Entrega</h4>
-            <p style="color: var(--text-dim);">Retirás tu equipo testeado al 100% y con su respectiva garantía escrita.</p>
-        </div>
+      </div>
     </section>
+  </main>
 
-    <section class="faq">
-        <h2 style="text-align: center; margin-bottom: 40px;">Preguntas Frecuentes</h2>
-        <details class="reveal">
-            <summary>¿Toman mi equipo usado como parte de pago?</summary>
-            <p>Sí, tomamos equipos seleccionados. Realizamos una tasación técnica presencial en nuestras sucursales de Calle 41 o Calle 529.</p>
-        </details>
-        <details class="reveal">
-            <summary>¿Cuánto demora un cambio de pantalla?</summary>
-            <p>La mayoría de los módulos de iPhone se cambian en menos de 40 minutos. Para otras marcas, el tiempo estimado es de 2 a 3 horas.</p>
-        </details>
-        <details class="reveal">
-            <summary>¿Tienen local físico?</summary>
-            <p>Contamos con dos sucursales en La Plata para brindarte seguridad y soporte técnico cara a cara.</p>
-        </details>
-    </section>
-
-    <footer>
-        <div class="logo">SOFT<span>CELL</span></div>
-        <p style="color: var(--text-dim); margin-top: 20px;">Calle 41 #1234 | Calle 529 #5678 - La Plata, Buenos Aires</p>
-        <div class="firm">
-            DISEÑADO POR <a href="https://ciborg347.onrender.com" target="_blank">CIBORG 347</a> // 2026
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <div class="brand-logo">
+              <img src="https://iili.io/qFM3ggR.jpg" alt="Logo SoftCell" loading="lazy" />
+            </div>
+            <div>
+              <h4>SOFTCELL</h4>
+              <p>
+                Servicio tecnico y venta de tecnologia en La Plata. Celulares, accesorios, audio y articulos
+                de computacion con atencion por WhatsApp.
+              </p>
+            </div>
+          </div>
         </div>
-    </footer>
 
-    <a href="https://wa.me/5492215318198" class="wa-float" target="_blank">
-        <svg viewBox="0 0 32 32"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.733 5.48 2.01 7.79l-2.01 7.21 7.385-1.935c2.192 1.192 4.712 1.868 7.393 1.868 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.455 0-4.745-0.633-6.738-1.743l-0.483-0.27-4.385 1.15 1.17-4.195-0.297-0.472c-1.228-1.947-1.94-4.253-1.94-6.733 0-7.355 5.978-13.333 13.333-13.333s13.333 5.978 13.333 13.333c0 7.355-5.978 13.333-13.333 13.333zM22.187 18.963c-0.338-0.168-2.002-0.987-2.312-1.1-0.31-0.112-0.537-0.168-0.763 0.168s-0.875 1.1-1.072 1.325c-0.197 0.225-0.393 0.253-0.732 0.085-0.338-0.168-1.428-0.527-2.722-1.68-1.007-0.897-1.687-2.005-1.885-2.343-0.197-0.338-0.022-0.52 0.147-0.688 0.152-0.152 0.338-0.393 0.507-0.59 0.168-0.197 0.225-0.338 0.338-0.563 0.112-0.225 0.055-0.422-0.028-0.59-0.083-0.168-0.763-1.842-1.045-2.518-0.275-0.66-0.553-0.57-0.763-0.58-0.197-0.012-0.422-0.012-0.647-0.012s-0.59 0.085-0.9 0.422c-0.31 0.338-1.183 1.155-1.183 2.815s1.212 3.265 1.38 3.49c0.168 0.225 2.385 3.643 5.777 5.103 0.807 0.347 1.437 0.553 1.928 0.71 0.81 0.257 1.548 0.22 2.13 0.133 0.65-0.098 2.002-0.817 2.283-1.605 0.283-0.787 0.283-1.463 0.197-1.605-0.083-0.142-0.31-0.225-0.648-0.393z"></path></svg>
-    </a>
+        <div class="footer-cols">
+          <div class="foot-card">
+            <strong>Contacto</strong>
+            <p>
+              WhatsApp:
+              <a target="_blank" rel="noopener noreferrer" href="https://wa.me/5492215318198">+54 9 221 531 8198</a>
+            </p>
+            <p>Instagram: SoftCell (perfil de referencia)</p>
+          </div>
 
-    <script>
-        // --- Intersection Observer for Reveal Effects ---
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    entry.target.classList.add('active-side');
-                }
-            });
-        }, { threshold: 0.1 });
+          <div class="foot-card">
+            <strong>Atencion</strong>
+            <p>La Plata, Buenos Aires</p>
+            <p>Horarios: a confirmar</p>
+            <p>Direcciones: a confirmar</p>
+          </div>
+        </div>
+      </div>
 
-        document.querySelectorAll('.reveal, .slide-left, .slide-right').forEach(el => observer.observe(el));
-    </script>
+      <div class="firm">
+        Creado y diseñado por <a href="https://ciborg347.onrender.com" target="_blank" rel="noopener noreferrer">Ciborg 347</a>
+      </div>
+    </div>
+  </footer>
+
+  <a
+    href="https://wa.me/5492215318198?text=Hola%20SoftCell%2C%20quiero%20hacer%20una%20consulta."
+    class="wa-float"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Abrir chat de WhatsApp con SoftCell"
+  >
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.733 5.48 2.01 7.79l-2.01 7.21 7.385-1.935c2.192 1.192 4.712 1.868 7.393 1.868 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.455 0-4.745-0.633-6.738-1.743l-0.483-0.27-4.385 1.15 1.17-4.195-0.297-0.472c-1.228-1.947-1.94-4.253-1.94-6.733 0-7.355 5.978-13.333 13.333-13.333s13.333 5.978 13.333 13.333c0 7.355-5.978 13.333-13.333 13.333zM22.187 18.963c-0.338-0.168-2.002-0.987-2.312-1.1-0.31-0.112-0.537-0.168-0.763 0.168s-0.875 1.1-1.072 1.325c-0.197 0.225-0.393 0.253-0.732 0.085-0.338-0.168-1.428-0.527-2.722-1.68-1.007-0.897-1.687-2.005-1.885-2.343-0.197-0.338-0.022-0.52 0.147-0.688 0.152-0.152 0.338-0.393 0.507-0.59 0.168-0.197 0.225-0.338 0.338-0.563 0.112-0.225 0.055-0.422-0.028-0.59-0.083-0.168-0.763-1.842-1.045-2.518-0.275-0.66-0.553-0.57-0.763-0.58-0.197-0.012-0.422-0.012-0.647-0.012s-0.59 0.085-0.9 0.422c-0.31 0.338-1.183 1.155-1.183 2.815s1.212 3.265 1.38 3.49c0.168 0.225 2.385 3.643 5.777 5.103 0.807 0.347 1.437 0.553 1.928 0.71 0.81 0.257 1.548 0.22 2.13 0.133 0.65-0.098 2.002-0.817 2.283-1.605 0.283-0.787 0.283-1.463 0.197-1.605-0.083-0.142-0.31-0.225-0.648-0.393z"></path>
+    </svg>
+  </a>
+
+  <script>
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
 </body>
 </html>
+```
