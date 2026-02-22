@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoftCell | Tecnología & Servicio Técnico Profesional</title>
+    
+    <meta property="og:title" content="SoftCell - Especialistas en Smartphones">
+    <meta property="og:description" content="Servicio técnico y venta de equipos en La Plata. Calidad garantizada.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #020202;
+            --accent: #0070f3;
+            --accent-glow: rgba(0, 112, 243, 0.4);
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+            --text: #ffffff;
+            --text-dim: #94a3b8;
+        }
+
+        /* Reset & Base */
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 112, 243, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 112, 243, 0.05) 0%, transparent 40%);
+        }
+
+        /* Animations */
+        @keyframes slideLeft { from { opacity: 0; transform: translateX(-100px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideRight { from { opacity: 0; transform: translateX(100px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .reveal-left { animation: slideLeft 1s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+        .reveal-right { animation: slideRight 1s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+
+        /* Navigation */
+        header {
+            position: fixed; top: 0; width: 100%; padding: 25px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+        }
+        .logo { font-weight: 800; font-size: 1.4rem; color: var(--accent); letter-spacing: -1px; }
+
+        /* Hero Full Height */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            background: radial-gradient(circle at 80% 50%, var(--accent-glow), transparent);
+        }
+        .hero-content { max-width: 650px; }
+        .hero h1 { font-size: clamp(3rem, 10vw, 5rem); font-weight: 800; line-height: 0.9; margin-bottom: 25px; letter-spacing: -4px; }
+        .hero p { font-size: 1.2rem; color: var(--text-dim); margin-bottom: 40px; line-height: 1.6; }
+
+        /* Bento Grid Pro */
+        .section-title { text-align: center; margin-bottom: 50px; font-size: 2.5rem; letter-spacing: -2px; }
+        .bento {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            padding: 0 20px;
+        }
+        .bento-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 40px;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .bento-card:hover { border-color: var(--accent); background: rgba(255,255,255,0.06); transform: translateY(-10px); }
+        .bento-large { grid-column: span 2; grid-row: span 2; }
+        .bento-medium { grid-column: span 2; }
+
+        /* UI Elements */
+        .btn {
+            display: inline-flex; padding: 18px 40px;
+            background: var(--accent); color: white;
+            text-decoration: none; font-weight: 700;
+            border-radius: 100px; transition: 0.3s;
+            box-shadow: 0 15px 35px var(--accent-glow);
+        }
+        .btn:hover { transform: scale(1.05); filter: brightness(1.2); }
+
+        .badge {
+            background: rgba(0, 112, 243, 0.1);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 6px 16px; border-radius: 100px;
+            font-size: 0.75rem; font-weight: 800;
+            margin-bottom: 20px; display: inline-block;
+        }
+
+        /* FAQ Hud Style */
+        .faq-container { max-width: 800px; margin: 0 auto 100px; padding: 0 20px; }
+        details { background: var(--glass); border: 1px solid var(--border); border-radius: 20px; margin-bottom: 15px; padding: 20px; }
+        summary { font-weight: 700; cursor: pointer; outline: none; list-style: none; }
+        summary::marker { display: none; }
+
+        /* Floating WhatsApp Pro */
+        .wa-float {
+            position: fixed; bottom: 40px; right: 40px;
+            width: 70px; height: 70px; background: #25d366;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 40px rgba(37, 211, 102, 0.4); z-index: 2000;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .wa-float:hover { transform: scale(1.15) rotate(15deg); }
+        .wa-float svg { width: 35px; fill: white; }
+
+        /* Footer */
+        footer { padding: 100px 5%; border-top: 1px solid var(--border); text-align: center; }
+        footer a { color: var(--accent); text-decoration: none; font-weight: 700; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .bento { grid-template-columns: 1fr; }
+            .bento-large, .bento-medium { grid-column: span 1; }
+            .hero { padding: 120px 5% 0; align-items: flex-start; text-align: center; }
+            .hero-content { margin: 0 auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">SOFTCELL</div>
+        <a href="https://wa.me/5492215318198" class="btn" style="padding: 12px 25px; font-size: 0.8rem; box-shadow: none;">CONTACTAR</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content reveal-left">
+            <span class="badge">SOPORTE TÉCNICO ELITE</span>
+            <h1>Tecnología sin límites.</h1>
+            <p>Reparación avanzada, accesorios premium y la mejor selección de smartphones en La Plata. Calidad certificada en cada equipo.</p>
+            <a href="https://wa.me/5492215318198?text=Hola%20SoftCell,%20vengo%20de%20la%20web" class="btn">PEDIR PRESUPUESTO</a>
+        </div>
+    </section>
+
+    <h2 class="section-title reveal-right">Catálogo & Servicios</h2>
+    
+    <section class="bento">
+        <div class="bento-card bento-large reveal-left">
+            <span class="badge">MÁS BUSCADO</span>
+            <h2>Servicio Técnico Especializado</h2>
+            <p style="color: var(--text-dim); margin-top: 20px;">
+                Cambiamos tu pantalla, batería o pin de carga en tiempo récord. Equipos de diagnóstico de última generación para fallas complejas.
+            </p>
+            <div style="font-size: 8rem; position: absolute; bottom: -20px; right: -20px; opacity: 0.1;">⚡</div>
+        </div>
+
+        <div class="bento-card bento-medium reveal-right" style="background: linear-gradient(45deg, rgba(0,112,243,0.1), transparent);">
+            <h2>Venta de Equipos</h2>
+            <p style="color: var(--text-dim);">Nuevos y usados seleccionados con garantía escrita. Consultá stock disponible.</p>
+        </div>
+
+        <div class="bento-card reveal-left">
+            <h3>Accesorios</h3>
+            <p style="color: var(--text-dim); font-size: 0.9rem;">Gaming, Fundas y más.</p>
+        </div>
+
+        <div class="bento-card reveal-right">
+            <h3>La Plata</h3>
+            <p style="color: var(--text-dim); font-size: 0.9rem;">Calle 41 / Calle 529.</p>
+        </div>
+    </section>
+
+    <section class="faq-container">
+        <h2 class="section-title">Dudas rápidas</h2>
+        <details class="reveal-left">
+            <summary>¿Toman equipos en parte de pago?</summary>
+            <p>Sí, previo chequeo técnico en nuestras sucursales para asegurar el estándar de calidad SoftCell.</p>
+        </details>
+        <details class="reveal-right">
+            <summary>¿Tienen garantía los arreglos?</summary>
+            <p>Absolutamente. Cada reparación cuenta con garantía escrita de SoftCell.</p>
+        </details>
+    </section>
+
+    <footer>
+        <p style="color: var(--text-dim);">SoftCell Telefonía Móvil - Expertos en Tech</p>
+        <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.6;">
+            Creado y diseñado por <a href="https://ciborg347.onrender.com" target="_blank">Ciborg 347</a>
+        </p>
+    </footer>
+
+    <a href="https://wa.me/5492215318198" class="wa-float" target="_blank">
+        <svg viewBox="0 0 32 32">
+            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.733 5.48 2.01 7.79l-2.01 7.21 7.385-1.935c2.192 1.192 4.712 1.868 7.393 1.868 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.455 0-4.745-0.633-6.738-1.743l-0.483-0.27-4.385 1.15 1.17-4.195-0.297-0.472c-1.228-1.947-1.94-4.253-1.94-6.733 0-7.355 5.978-13.333 13.333-13.333s13.333 5.978 13.333 13.333c0 7.355-5.978 13.333-13.333 13.333zM22.187 18.963c-0.338-0.168-2.002-0.987-2.312-1.1-0.31-0.112-0.537-0.168-0.763 0.168s-0.875 1.1-1.072 1.325c-0.197 0.225-0.393 0.253-0.732 0.085-0.338-0.168-1.428-0.527-2.722-1.68-1.007-0.897-1.687-2.005-1.885-2.343-0.197-0.338-0.022-0.52 0.147-0.688 0.152-0.152 0.338-0.393 0.507-0.59 0.168-0.197 0.225-0.338 0.338-0.563 0.112-0.225 0.055-0.422-0.028-0.59-0.083-0.168-0.763-1.842-1.045-2.518-0.275-0.66-0.553-0.57-0.763-0.58-0.197-0.012-0.422-0.012-0.647-0.012s-0.59 0.085-0.9 0.422c-0.31 0.338-1.183 1.155-1.183 2.815s1.212 3.265 1.38 3.49c0.168 0.225 2.385 3.643 5.777 5.103 0.807 0.347 1.437 0.553 1.928 0.71 0.81 0.257 1.548 0.22 2.13 0.133 0.65-0.098 2.002-0.817 2.283-1.605 0.283-0.787 0.283-1.463 0.197-1.605-0.083-0.142-0.31-0.225-0.648-0.393z"></path>
+        </svg>
+    </a>
+
+</body>
+</html>
